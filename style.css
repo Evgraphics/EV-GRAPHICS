@@ -160,7 +160,7 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(5, 160, 207, 0.6), rgba(0, 0, 0, 0.4)), url("img/EV S BG.png") no-repeat center center/cover;
+    background: linear-gradient(rgba(5, 160, 207, 0.6), rgba(0, 0, 0, 0.4)), url("EV S BG.png") no-repeat center center/cover;
     position: relative;
     padding-top: 80px;
 }
@@ -1108,4 +1108,5 @@ footer {
         bottom: 20px;
         right: 20px;
     }
+
 }
