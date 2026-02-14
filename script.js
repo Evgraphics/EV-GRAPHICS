@@ -109,7 +109,7 @@ const categoryImages = {
         'img/BS CARD 2.jpeg', 'img/BS CARD 4.jpeg', 'img/BS CARD 6.jpeg', 'img/BS CARD 8.jpeg'
     ],
     'event-tickets': [
-        'img/tickets available.jpg', 'img/TICET D 1.jpeg.jpg', 'imgTICET D 3.jpeg.jpg',
+        'https://github.com/Evgraphics/EV-GRAPHICS/blob/f0f85108954d062e850fad70c90b31d61efb871f/TICET%20D%201.jpeg', 'img/TICET D 1.jpeg.jpg', 'imgTICET D 3.jpeg.jpg',
         'img/tickets available.jpg', 'img/TICET D 2.jpeg', 'img/TICET D 4.jpeg.jpg'
     ],
     'banner-visiting': [
@@ -460,5 +460,6 @@ if (contactForm) {
             });
     });
 }
+
 
 
