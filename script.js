@@ -75,47 +75,145 @@ document.querySelectorAll('.service-card, .Samples-item, .section-title, .info-i
     observer.observe(el);
 });
 
-// Sample Filtering functionality
-const filterBtns = document.querySelectorAll('.filter-btn');
-const sampleItems = document.querySelectorAll('.Samples-item');
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
+// --- Category Management & Lightbox Logic ---
 
-        const filterValue = btn.getAttribute('data-filter');
+// Image Data Source (simulated large gallery using available images)
+const categoryImages = {
+    'youtube-thumbnail': [
+        'V2.jpg', '1.jpg', '10.jpg', '11.jpg', 'V1.jpg',
+        'V2.jpg', '1.jpg', '10.jpg', '11.jpg', 'V1.jpg'
+    ],
+    'flyer': [
+        'COVER 1.jpg', '4.jpg', '2.jpg', 'COVER 1.jpg', '4.jpg',
+        'COVER 1.jpg', '4.jpg', '2.jpg', 'COVER 1.jpg'
+    ],
+    'brand-label': [
+        'PEANUT 1.jpg', 'PEANUT 2.jpg', 'PEANUT 3.jpg', 'TC 1.jpg',
+        'PEANUT 1.jpg', 'PEANUT 2.jpg', 'PEANUT 3.jpg', 'TC 1.jpg'
+    ],
+    'tute-cover': [
+        'COVER 2.jpg', 'COVER 7.png', 'COVER 2.jpg', 'COVER 3.jpg',
+        'COVER 2.jpg', 'COVER 7.png', 'COVER 2.jpg', 'COVER 3.jpg'
+    ],
+    'social-post': [
+        'COVER 6.jpg', '5.jpg', '6.jpg', '8.jpg', '9.jpg',
+        'SP IC 1.png', 'SP IC 4.jpg', 'Untitled design (1).png'
+    ],
+    'tshirt-merch': [
+        'T1.jpg', 'T3.jpg', 'TC 2.jpg', 'T1.jpg', 'T3.jpg',
+        'T1.jpg', 'T3.jpg', 'TC 2.jpg', 'T1.jpg'
+    ],
+    'business-card': [
+        'S3.jpg', 'S 1.jpg', 'S2.jpg', '3.jpg', 'S3.jpg',
+        'S 1.jpg', 'S2.jpg', '3.jpg', 'S3.jpg'
+    ],
+    'event-tickets': [
+        'tickets available.jpg', 'COVER 4.jpg', 'COVER 5.jpg',
+        'tickets available.jpg', 'COVER 4.jpg', 'COVER 5.jpg'
+    ],
+    'banner-visiting': [
+        'S 1.jpg', 'S2.jpg', 'S3.jpg', '7.jpg', 'S 1.jpg',
+        'S2.jpg', 'S3.jpg', '7.jpg'
+    ]
+};
 
-        // Filter samples
-        sampleItems.forEach(item => {
-            const categories = item.getAttribute('data-category').split(' ');
-            const matches = filterValue === 'all' || categories.includes(filterValue);
+// Auto Slideshow for Category Cards
+const categoryCards = document.querySelectorAll('.sample-category-card');
 
-            if (matches) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                }, 10);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 300);
-            }
-        });
+categoryCards.forEach(card => {
+    const category = card.getAttribute('data-category');
+    const imgElement = card.querySelector('.category-main-img');
+    const images = categoryImages[category];
+
+    if (images && images.length > 1) {
+        let currentIndex = 0;
+
+        // Change image every 3 seconds
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            // Simple fade effect could be added here preferably via CSS class, 
+            // but directly swapping src works for basic slideshow
+            imgElement.style.opacity = '0.5';
+            setTimeout(() => {
+                imgElement.src = images[currentIndex];
+                imgElement.onload = () => {
+                    imgElement.style.opacity = '1';
+                };
+            }, 200);
+        }, 3000 + Math.random() * 2000); // Random offset so they don't all change at once
+    }
+
+    // click event to open lightbox
+    card.addEventListener('click', () => {
+        openLightbox(category);
     });
 });
 
-// Apply initial styles to samples
-sampleItems.forEach(item => {
-    item.style.transition = 'all 0.3s ease';
-    item.style.opacity = '1';
-    item.style.transform = 'scale(1)';
+// Lightbox Functions
+const lightbox = document.getElementById('lightbox');
+const lightboxGrid = document.getElementById('lightbox-grid');
+const lightboxTitle = document.getElementById('lightbox-category-title');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+function openLightbox(category) {
+    // Clear previous
+    lightboxGrid.innerHTML = '';
+
+    // Set Title
+    lightboxTitle.innerText = category.toUpperCase() + ' SAMPLES';
+
+    // Populate Images
+    // We duplicate the array to simulate "60 images" if needed, 
+    // or just use what we have.
+    const images = categoryImages[category];
+    // Create enough copies to fill grid
+    const totalDisplay = 60;
+
+    for (let i = 0; i < totalDisplay; i++) {
+        const src = images[i % images.length];
+        const imgWrapper = document.createElement('div');
+        imgWrapper.className = 'lightbox-img-wrapper';
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'lightbox-img';
+        img.loading = 'lazy'; // Performance for many images
+
+        imgWrapper.appendChild(img);
+        lightboxGrid.appendChild(imgWrapper);
+
+        // Animate appearance
+        imgWrapper.style.opacity = '0';
+        imgWrapper.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            imgWrapper.style.transition = 'all 0.5s ease';
+            imgWrapper.style.opacity = '1';
+            imgWrapper.style.transform = 'translateY(0)';
+        }, i * 50); // Staggered animation
+    }
+
+    // Show Lightbox
+    lightbox.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Close Lightbox
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// Close on outside click
+window.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 });
+
 
 // Reviews Carousel Interaction (Manual Scroll support)
 const reviewsCarousel = document.querySelector('.reviews-carousel');
@@ -312,6 +410,7 @@ if (feedbackForm) {
 }
 
 // Contact Form Submission (Get In Touch)
+// Contact Form Submission (Get In Touch)
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
@@ -329,12 +428,12 @@ if (contactForm) {
         submitBtn.innerText = 'Sending...';
         submitBtn.disabled = true;
 
-        // Send email using EmailJS - reusing the same template/service for simplicity
-        // Ideally you might want a separate template, but this works if the template handles generic messages too
+        // Send email using EmailJS
         const templateParams = {
             from_name: name,
             from_email: email,
-            rating: "N/A (Contact Form)", // Indicate this is a contact message, not a rating
+            reply_to: email, // Added correct reply_to field
+            rating: "N/A (Contact Form)",
             message: message,
             to_name: "EV Graphic's Admin"
         };
@@ -342,15 +441,23 @@ if (contactForm) {
         emailjs.send('service_Janith2007', 'template_jycdexf', templateParams)
             .then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
-                alert('Message sent successfully! We will get back to you soon.');
+
+                // Show a more visible success message (alert is okay, but custom UI is better)
+                // For now, we'll stick to alert but make it friendly
+                alert('Success! Your message has been sent to EV Graphic\'s. We will contact you shortly.');
+
                 contactForm.reset();
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
+                submitBtn.innerText = 'Message Sent!';
+                setTimeout(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 3000);
             }, function (error) {
                 console.log('FAILED...', error);
-                alert('Failed to send message. Please try again later.');
-                submitBtn.innerText = originalBtnText;
+                alert('Oops! Something went wrong. Please check your internet connection or email us directly at sdimuthubandara@gmail.com');
+                submitBtn.innerText = 'Try Again';
                 submitBtn.disabled = false;
             });
     });
 }
+
