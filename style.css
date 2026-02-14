@@ -160,7 +160,7 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url("EV S BG.png") no-repeat center center/cover;
+    background: url("https://github.com/Evgraphics/EV-GRAPHICS/blob/710bf4c0b21b988f4f73801071e977feac3bc39f/EV%20S%20BG.png") no-repeat center center/cover;
     position: relative;
     padding-top: 80px;
 }
@@ -1110,6 +1110,7 @@ footer {
     }
 
 }
+
 
 
 
