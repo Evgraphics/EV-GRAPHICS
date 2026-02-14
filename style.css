@@ -161,7 +161,7 @@ header .container {
     justify-content: center;
     text-align: center;
     /* User requested path: EV S BG.png (located in img folder) */
-    background: url("EV S BG.png") no-repeat center center;
+    background: url("img/EV S BG.png") no-repeat center center;
     background-size: cover;
     position: relative;
     padding-top: 80px;
