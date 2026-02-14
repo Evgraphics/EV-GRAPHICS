@@ -105,12 +105,12 @@ const categoryImages = {
         'img/T1.jpg', 'img/T3.jpg', 'img/TC 2.jpg', 'img/T1.jpg'
     ],
     'business-card': [
-        'img/S3.jpg', 'img/S 1.jpg', 'img/S2.jpg', 'img/3.jpg', 'img/S3.jpg',
-        'img/S 1.jpg', 'img/S2.jpg', 'img/3.jpg', 'img/S3.jpg'
+        'img/BS CARD 1.jpeg', 'img/BS CARD 3.jpeg', 'img/BS CARD 5.jpeg', 'img/BS CARD 7.jpeg', 'img/BS CARD 9.jpeg',
+        'img/BS CARD 2.jpeg', 'img/BS CARD 4.jpeg', 'img/BS CARD 6.jpeg', 'img/BS CARD 8.jpeg'
     ],
     'event-tickets': [
-        'img/tickets available.jpg', 'img/COVER 4.jpg', 'img/COVER 5.jpg',
-        'img/tickets available.jpg', 'img/COVER 4.jpg', 'img/COVER 5.jpg'
+        'img/tickets available.jpg', 'img/TICET D 1.jpeg.jpg', 'imgTICET D 3.jpeg.jpg',
+        'img/tickets available.jpg', 'img/TICET D 2.jpeg', 'img/TICET D 4.jpeg.jpg'
     ],
     'banner-visiting': [
         'img/S 1.jpg', 'img/S2.jpg', 'img/S3.jpg', 'img/7.jpg', 'img/S 1.jpg',
@@ -460,4 +460,5 @@ if (contactForm) {
             });
     });
 }
+
 
