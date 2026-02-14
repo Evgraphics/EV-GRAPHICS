@@ -80,47 +80,41 @@ document.querySelectorAll('.service-card, .Samples-item, .section-title, .info-i
 
 // Image Data Source (simulated large gallery using available images)
 const categoryImages = {
-    'logo desing': [
-        'LOGO DESING 1.jpeg', 'LOGO DESING 2.jpeg', 'LOGO DESING 3.jpeg', 'LOGO DESING 4.jpeg', 'LOGO DESING 5.jpeg',
-        'LOGO DESING 10.jpeg', 'LOGO DESING 9.jpeg', 'LOGO DESING 8.jpeg', 'LOGO DESING 7.jpeg', 'LOGO DESING 6.jpeg',
-        'LOGO DESING 11.jpeg'
-    ],
     'youtube-thumbnail': [
-        'YT T 1.jpeg', 'YT T 1.jpeg', 'YT T 2.jpeg', 'YT T 1.jpeg', 'YT T 2.jpeg',
-        'YT T 2.jpeg', 'YT T 2.jpeg', 'YT T 1.jpeg', 'YT T 2.jpeg', 'YT T 1.jpeg'
+        'img/V2.jpg', 'img/1.jpg', 'img/10.jpg', 'img/11.jpg', 'img/V1.jpg',
+        'img/V2.jpg', 'img/1.jpg', 'img/10.jpg', 'img/11.jpg', 'img/V1.jpg'
     ],
     'flyer': [
-        'COVER 1.jpg', '4.jpg', '2.jpg', 'COVER 1.jpg', '4.jpg',
-        'COVER 1.jpg', '4.jpg', '2.jpg', 'COVER 1.jpg'
+        'img/COVER 1.jpg', 'img/4.jpg', 'img/2.jpg', 'img/COVER 1.jpg', 'img/4.jpg',
+        'img/COVER 1.jpg', 'img/4.jpg', 'img/2.jpg', 'img/COVER 1.jpg'
     ],
     'brand-label': [
-        'PEANUT 1.jpg', 'PEANUT 2.jpg', 'PEANUT 3.jpg', 'TC 1.jpg',
-        'PEANUT 1.jpg', 'PEANUT 2.jpg', 'PEANUT 3.jpg', 'TC 1.jpg'
+        'img/PEANUT 1.jpg', 'img/PEANUT 2.jpg', 'img/PEANUT 3.jpg', 'img/TC 1.jpg',
+        'img/PEANUT 1.jpg', 'img/PEANUT 2.jpg', 'img/PEANUT 3.jpg', 'img/TC 1.jpg'
     ],
     'tute-cover': [
-        'COVER 2.jpg', 'COVER 7.png', 'COVER 2.jpg', 'COVER 7.jpg',
-        'COVER 1.jpg', 'COVER 2.png', 'COVER 6.jpg', 'COVER 5.jpg'
+        'img/COVER 2.jpg', 'img/COVER7.png', 'img/COVER 2.jpg', 'img/COVER 3.jpg',
+        'img/COVER 2.jpg', 'img/COVER7.png', 'img/COVER 2.jpg', 'img/COVER 3.jpg'
     ],
     'social-post': [
-        'SOCIL MEDIA 1.jpeg', 'SOCIL MEDIA D2.jpeg', 'SOCIL MEDIA 3.jpeg', 'SOCIL MEDIA 4.jpeg', 'SOCIL MEDIA 5.jpeg',
-        'SOCIL MEDIA D1.jpeg', 'SOCIL MEDIA 2.jpeg', 'SOCIL MEDIA D3.jpeg','SOCIL MEDIA D4.jpeg', 'SOCIL MEDIA D5.jpeg',
-        'SOCIL MEDIA 6.jpeg',
+        'img/COVER 6.jpg', 'img/5.jpg', 'img/6.jpg', 'img/8.jpg', 'img/9.jpg',
+        'img/SP IC 1.png', 'img/SP IC 4.jpg', 'img/Untitled design (1).png'
     ],
     'tshirt-merch': [
-        'SHIRT D 1.jpeg', 'SHIRT D 3.jpeg', 'SHIRT D 5.jpeg', 'SHIRT D 7.jpeg', 'SHIRT D 9.jpeg',
-        'SHIRT D 2.jpeg', 'SHIRT D 4.jpeg', 'SHIRT D 6.jpeg', 'SHIRT D 8.jpeg', 'SHIRT D 10.jpeg',
+        'img/T1.jpg', 'img/T3.jpg', 'img/TC 2.jpg', 'img/T1.jpg', 'img/T3.jpg',
+        'img/T1.jpg', 'img/T3.jpg', 'img/TC 2.jpg', 'img/T1.jpg'
     ],
     'business-card': [
-        'BS CARD 1.jpeg', 'BS CARD 3.jpeg', 'BS CARD 5.jpeg',
-        'BS CARD 2.jpeg', 'BS CARD 4.jpeg', 'BS CARD 6.jpeg',
+        'img/S3.jpg', 'img/S 1.jpg', 'img/S2.jpg', 'img/3.jpg', 'img/S3.jpg',
+        'img/S 1.jpg', 'img/S2.jpg', 'img/3.jpg', 'img/S3.jpg'
     ],
     'event-tickets': [
-        'tickets available.jpg', 'TICET D 1.jpeg', 'TICET D 3.jpeg', 'TICET D 5.jpeg',
-        'tickets available.jpg', 'TICET D 2.jpeg', 'TICET D 4.jpeg'
+        'img/tickets available.jpg', 'img/COVER 4.jpg', 'img/COVER 5.jpg',
+        'img/tickets available.jpg', 'img/COVER 4.jpg', 'img/COVER 5.jpg'
     ],
     'banner-visiting': [
-        'S 1.jpg', '2.jpg', '3.jpg', '4.jpg', '1.jpg',
-        'S 1.jpg', 'S3.jpg', '7.jpg'
+        'img/S 1.jpg', 'img/S2.jpg', 'img/S3.jpg', 'img/7.jpg', 'img/S 1.jpg',
+        'img/S2.jpg', 'img/S3.jpg', 'img/7.jpg'
     ]
 };
 
@@ -466,5 +460,4 @@ if (contactForm) {
             });
     });
 }
-
 
