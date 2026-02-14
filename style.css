@@ -160,7 +160,7 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url("img/EV S BG.png") no-repeat center center;
+    background: url("EV S BG.png") no-repeat center center;
     background-size: cover;
     position: relative;
     padding-top: 80px;
@@ -1554,3 +1554,4 @@ footer {
         background-position: center;
     }
 }
+
