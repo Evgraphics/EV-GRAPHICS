@@ -160,7 +160,9 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url("https://github.com/Evgraphics/EV-GRAPHICS/blob/710bf4c0b21b988f4f73801071e977feac3bc39f/EV%20S%20BG.png") no-repeat center center/cover;
+    /* User requested path: EV S BG.png (located in img folder) */
+    background: url("EV S BG.png") no-repeat center center;
+    background-size: cover;
     position: relative;
     padding-top: 80px;
 }
@@ -1109,8 +1111,236 @@ footer {
         right: 20px;
     }
 
+
+}
+
+/* --- New Samples Category View Styles --- */
+
+.Samples-grid.category-view {
+    display: grid;
+    /* Smaller columns as requested (200px min) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0 10px;
+}
+
+.sample-category-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 200px;
+    /* Reduced height */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.sample-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 243, 255, 0.2);
+    border-color: var(--primary-color);
+}
+
+.card-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.category-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+/* Hover Effect: Text appears only on hover */
+.sample-category-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.sample-category-card:hover .overlay {
+    opacity: 1;
+    /* Visible on hover */
+}
+
+.sample-category-card .overlay h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.sample-category-card .overlay p {
+    color: #fff;
+    font-size: 0.8rem;
+    font-style: italic;
 }
 
 
+/* --- Lightbox Styles --- */
+.lightbox {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    animation: fadeIn 0.3s ease;
+}
 
+.lightbox-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
 
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-color);
+}
+
+#lightbox-category-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    z-index: 100;
+}
+
+.lightbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.lightbox-img-wrapper {
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.lightbox-img-wrapper:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+    z-index: 10;
+}
+
+.lightbox-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hero Section Mobile Fix */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important;
+        /* Fix for mobile browser frame jumping */
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+/* Footer Icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-icons img {
+    height: 40px;
+    /* Small size */
+    width: auto;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Header Icons */
+.header-icons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+    /* Space from the logo text */
+    align-items: center;
+}
+
+.header-icons img {
+    height: 30px;
+    /* Small size */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.header-icons img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .header-icons {
+        display: none;
+        /* Hide on mobile to save space */
+    }
+}
